@@ -1619,20 +1619,6 @@ body {
 }
 
 /* line 1125, app/scss/screen.css */
-.newspaper-bottomarticle-first p {
-  font-family: 'Kreon', serif;
-  font-weight: 700;
-  font-size: 18px;
-  font-size: 1.125rem;
-  text-transform: uppercase;
-  margin: 0em;
-  background-color: #fff8ee;
-  margin: 0;
-  padding: 0 0.222222em 1px 0;
-  display: block;
-  /*480*/
-  /*960*/
-}
 
 @media only screen and (min-width: 30em) {
   /* line 1139, app/scss/screen.css */
@@ -2609,5 +2595,91 @@ body.reading-mode .newspaper {
 @keyframes cursor-blink {
     0%, 50% { border-color: #000; }
     51%, 100% { border-color: transparent; }
+}
+
+.newspaper-animation {
+  animation: wiggle 3.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-0.5deg) scale(1.005); }
+  50% { transform: rotate(0deg) scale(1); }
+  75% { transform: rotate(0.5deg) scale(1.005); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.newspaper-bottomarticle-first p {
+    text-transform: none !important;
+	 font-weight: normal !important;
+}
+.f-animate {
+  display: inline-block;
+  animation: colorShift 2s infinite ease-in-out;
+  font-weight: bold; /* optional, looks nicer */
+}
+ .f-animate {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  animation: colorShift 2s infinite ease-in-out;
+}
+
+
+@keyframes colorShift {
+   0%   { color: #000000; }  /* black */
+  25%  { color: #4e3b2a; }  /* soft brown */
+  50%  { color: #6b4a2b; }  /* warm medium brown */
+  75%  { color: #3b2a1f; }  /* darker brown */
+  100% { color: #000000; }  /* back to black */
+}
+/* Fullscreen loader */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #d4c1a3; /* newspaper brownish background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  transition: opacity 0.6s ease;
+}
+
+/* Loader text */
+.loader-text {
+  font-family: inherit;
+  font-size: 1.8rem;
+  color: #3b2a1f;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+/* Dot animation */
+.dots span {
+  opacity: 0;
+  animation: blink 1.4s infinite;
+}
+
+.dots span:nth-child(1) { animation-delay: 0s; }
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0%, 20% { opacity: 0; }
+  50%     { opacity: 1; }
+  100%    { opacity: 0; }
+}
+
+/* Hide loader when done */
+#loader.hide {
+  opacity: 0;
+  pointer-events: none;
 }
 
